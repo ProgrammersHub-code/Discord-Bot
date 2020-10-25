@@ -24,8 +24,7 @@ public class DiscordBot {
                     User self = event.getSelf();
                     System.out.println(String.format("Logged in as %s#%s", self.getUsername(), self.getDiscriminator()));
                 });
-
-
+        
 
         client.on(MessageCreateEvent.class).subscribe((MessageCreateEvent event) -> {
             final Message message = event.getMessage();
@@ -33,6 +32,7 @@ public class DiscordBot {
 
 
             if ("*Poke*".equalsIgnoreCase(message.getContent())) {
+
             }
             if ("?doot".equalsIgnoreCase(message.getContent())) {
                 channel.createMessage("DOOT DOOT!").block();
