@@ -35,7 +35,7 @@ public class DiscordBot {
             if ("*Poke*".equalsIgnoreCase(message.getContent())) {
             }
             if ("?doot".equalsIgnoreCase(message.getContent())) {
-                channel.createMessage("DOOoT DOOT!").block();
+                channel.createMessage("DOOT DOOT!").block();
             }
 
         });
