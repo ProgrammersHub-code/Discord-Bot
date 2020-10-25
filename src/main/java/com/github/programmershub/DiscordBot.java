@@ -24,7 +24,7 @@ public class DiscordBot {
                 .subscribe(event -> {
                     User self = event.getSelf();
                     System.out.println(String.format("Logged in as %s#%s", self.getUsername(), self.getDiscriminator()));
-                    System.out.print(SERVER_URL + ":" + PORT);
+                    System.out.println(SERVER_URL + ":" + PORT);
                 });
 
 
