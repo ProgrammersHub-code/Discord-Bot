@@ -18,12 +18,13 @@ public class DiscordBot {
 
     public static void main(String[] args) {
         GatewayDiscordClient client = DiscordClientBuilder.create("NzY5MjY1MTQzNzU0MTI5NDQ5.X5Mf_g._fRzgHrmas-mklSCpHHAMmuJEtY").build().login().block();
-        System.out.print(SERVER_URL + ":" + PORT);
+
 
         client.getEventDispatcher().on(ReadyEvent.class)
                 .subscribe(event -> {
                     User self = event.getSelf();
                     System.out.println(String.format("Logged in as %s#%s", self.getUsername(), self.getDiscriminator()));
+                    System.out.print(SERVER_URL + ":" + PORT);
                 });
 
 
