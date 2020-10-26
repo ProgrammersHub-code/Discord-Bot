@@ -1,1 +1,1 @@
-heroku ps:scale worker=1 java $JAVA_OPTS -cp target/classes:target/dependency/* com.github.programmershub.DiscordBot -Dserver.port=$PORT --port $PORT
+heroku worker=1 java $JAVA_OPTS -cp target/classes:target/dependency/* com.github.programmershub.DiscordBot -Dserver.port=$PORT --port $PORT
