@@ -11,38 +11,39 @@ import discord4j.core.object.entity.channel.MessageChannel;
 public class DiscordBot {
 
 
-    public static String PORT = System.getenv("PORT");
-    public static String SERVER_URL = System.getenv("SERVER_URL");
-
+    private String PORT = System.getenv("PORT");
+    private String SERVER_URL = System.getenv("SERVER_URL");
 
 
     public static void main(String[] args) {
-        GatewayDiscordClient client = DiscordClientBuilder.create("NzY5MjY1MTQzNzU0MTI5NDQ5.X5Mf_g._fRzgHrmas-mklSCpHHAMmuJEtY").build().login().block();
+        String key = System.getenv("BOTKEY");
+
+        GatewayDiscordClient client = DiscordClientBuilder.create(key2).build().login().block();
 
 
         client.getEventDispatcher().on(ReadyEvent.class)
                 .subscribe(event -> {
                     User self = event.getSelf();
                     System.out.println(String.format("Logged in as %s#%s", self.getUsername(), self.getDiscriminator()));
-                    System.out.println(SERVER_URL + ":" + PORT);
                 });
-
 
         client.on(MessageCreateEvent.class).subscribe((MessageCreateEvent event) -> {
             final Message message = event.getMessage();
             final MessageChannel channel = message.getChannel().block();
 
+            switch(message.getContent()){
+                case "?doot":
+                    channel.createMessage("DOOT DOOT!").block();
+                    break;
+                case "?doot2":
+                    channel.createMessage("DOOT2 DOOT2!").block();
+                    break;
 
-            if ("*Poke*".equalsIgnoreCase(message.getContent())) {
-
+                default:
+                    break;
             }
-            if ("?doot".equalsIgnoreCase(message.getContent())) {
-                channel.createMessage("DOOT DOOT!").block();
-            }
-
         });
         client.onDisconnect().block();
     }
-
 
 }
