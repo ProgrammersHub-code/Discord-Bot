@@ -18,7 +18,7 @@ public class DiscordBot {
     public static void main(String[] args) {
         String key = System.getenv("BOTKEY");
 
-        GatewayDiscordClient client = DiscordClientBuilder.create(key2).build().login().block();
+        GatewayDiscordClient client = DiscordClientBuilder.create(key).build().login().block();
 
 
         client.getEventDispatcher().on(ReadyEvent.class)
